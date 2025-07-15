@@ -1,0 +1,7 @@
+Bundle-Name: preferences-web
+Bundle-SymbolicName: br.com.isaacsilva.preferences
+Bundle-Version: 1.0.0
+Export-Package: br.com.isaacsilva.preferences.constants
+Provide-Capability:\
+	liferay.language.resources;\
+		resource.bundle.base.name="content.Language"
