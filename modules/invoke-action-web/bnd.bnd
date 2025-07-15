@@ -1,0 +1,7 @@
+Bundle-Name: invoke-action-web
+Bundle-SymbolicName: br.com.isaac.invokeaction
+Bundle-Version: 1.0.0
+Export-Package: br.com.isaac.invokeaction.constants
+Provide-Capability:\
+	liferay.language.resources;\
+		resource.bundle.base.name="content.Language"
