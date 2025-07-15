@@ -1,8 +1,8 @@
 <%@ include file="/init.jsp" %>
 
-<h4>Portlet</h4>
+<h3>Navigate View</h3>
 
-<h5>View 2</h5>
+<h4>View 2</h4>
 
 <portlet:renderURL var="view1URL">
     <portlet:param name="mvcPath" value="/view-1.jsp"/>

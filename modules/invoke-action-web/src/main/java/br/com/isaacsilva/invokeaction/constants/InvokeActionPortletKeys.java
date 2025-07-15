@@ -1,4 +1,4 @@
-package br.com.isaac.invokeaction.constants;
+package br.com.isaacsilva.invokeaction.constants;
 
 /**
  * @author Isaac

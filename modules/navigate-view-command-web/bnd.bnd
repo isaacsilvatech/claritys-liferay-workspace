@@ -1,0 +1,7 @@
+Bundle-Name: navigate-view-command-web
+Bundle-SymbolicName: br.com.isaacsilva.navigateviewcommand
+Bundle-Version: 1.0.0
+Export-Package: br.com.isaacsilva.navigateviewcommand.constants
+Provide-Capability:\
+	liferay.language.resources;\
+		resource.bundle.base.name="content.Language"

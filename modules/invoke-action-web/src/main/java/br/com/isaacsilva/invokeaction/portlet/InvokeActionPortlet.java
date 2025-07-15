@@ -1,6 +1,6 @@
-package br.com.isaac.invokeaction.portlet;
+package br.com.isaacsilva.invokeaction.portlet;
 
-import br.com.isaac.invokeaction.constants.InvokeActionPortletKeys;
+import br.com.isaacsilva.invokeaction.constants.InvokeActionPortletKeys;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
