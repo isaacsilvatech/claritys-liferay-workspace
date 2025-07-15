@@ -1,9 +1,9 @@
 <%@ include file="/init.jsp" %>
 
 
-<h4>
-    <liferay-ui:message key="invokeaction.caption" />
-</h4>
+<h3>
+    Invoke Action
+</h3>
 
 <p>
 	<portlet:actionURL name="doSomething" var="actionDoSomethingURL" />
