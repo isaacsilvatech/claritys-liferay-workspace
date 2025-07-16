@@ -1,4 +1,4 @@
 Bundle-Name: model-util
-Bundle-SymbolicName: br.com.isaacsilva.modelutil
+Bundle-SymbolicName: br.com.isaacsilva.model.util
 Bundle-Version: 1.0.0
 Export-Package: br.com.isaacsilva.model.util

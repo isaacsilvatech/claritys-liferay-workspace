@@ -25,10 +25,15 @@ public class AbleMVCActionComamnd extends BaseMVCActionCommand {
 
     @Override
     protected void doProcessAction(ActionRequest actionRequest, ActionResponse actionResponse) {
-        Object obj = ModelFactoryUtil.fromRequest(actionRequest, Object.class);
+
+        TaskDto dto = ModelFactoryUtil.fromRequest(actionRequest, TaskDto.class);
 
         if (_log.isInfoEnabled()) {
             _log.info("Invoking #doProcessAction(ActionRequest, ActionResponse)");
         }
+    }
+
+    class TaskDto {
+
     }
 }
