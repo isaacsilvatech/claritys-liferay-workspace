@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-liferay
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: lportal
+      MYSQL_USER: liferay
+      MYSQL_PASSWORD: liferay
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  liferay:
+    build: .
+    container_name: liferay
+    depends_on:
+      - mysql
+    restart: always
+    environment:
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL: jdbc:mysql://mysql:3306/lportal?useSSL=false&serverTimezone=UTC
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVERCLASSNAME: com.mysql.cj.jdbc.Driver
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME: liferay
+      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD: liferay
+      LIFERAY_PASSWORDS_PERIOD_DEFAULT_PERIOD_POLICY_PERIOD_CHANGE_PERIOD_REQUIRED: false
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./liferay/deploy:/opt/liferay/deploy
+      - ./liferay/osgi/configs:/opt/liferay/osgi/configs
+      - ./liferay/osgi/modules:/opt/liferay/osgi/modules
+
+volumes:
+  mysql-data:
