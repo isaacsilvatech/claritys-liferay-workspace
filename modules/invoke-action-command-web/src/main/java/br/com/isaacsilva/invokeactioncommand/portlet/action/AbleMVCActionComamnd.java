@@ -2,6 +2,7 @@ package br.com.isaacsilva.invokeactioncommand.portlet.action;
 
 
 import br.com.isaacsilva.invokeactioncommand.constants.InvokeActionCommandPortletKeys;
+import br.com.isaacsilva.model.util.factory.ModelFactoryUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
@@ -24,6 +25,8 @@ public class AbleMVCActionComamnd extends BaseMVCActionCommand {
 
     @Override
     protected void doProcessAction(ActionRequest actionRequest, ActionResponse actionResponse) {
+        Object obj = ModelFactoryUtil.fromRequest(actionRequest, Object.class);
+
         if (_log.isInfoEnabled()) {
             _log.info("Invoking #doProcessAction(ActionRequest, ActionResponse)");
         }
