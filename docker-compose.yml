@@ -32,13 +32,14 @@ services:
       LIFERAY_JDBC_DEFAULT_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
       LIFERAY_JDBC_DEFAULT_USERNAME: liferay
       LIFERAY_JDBC_DEFAULT_PASSWORD: liferay
+      JAVA_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000
     ports:
       - "8080:8080"
     volumes:
+      - liferay-data:/opt/liferay/data
       - ./liferay/deploy:/opt/liferay/deploy
       - ./liferay/osgi/configs:/opt/liferay/osgi/configs
       - ./liferay/osgi/modules:/opt/liferay/osgi/modules
-
     networks:
       - liferay-net
 
@@ -47,4 +48,5 @@ networks:
     driver: bridge
 
 volumes:
+  liferay-data:
   mysql-data:
