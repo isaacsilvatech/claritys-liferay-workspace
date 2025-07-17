@@ -1,14 +1,12 @@
 package br.com.isaacsilva.navigateviewcommand.portlet.command.render;
 
 
-import br.com.isaacsilva.model.util.factory.ModelFactoryUtil;
 import br.com.isaacsilva.navigateviewcommand.constants.MVCPortletKeys;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCRenderCommand;
 import org.osgi.service.component.annotations.Component;
 
-import javax.portlet.PortletException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 

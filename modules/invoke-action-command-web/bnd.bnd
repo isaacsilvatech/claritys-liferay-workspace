@@ -1,7 +1,7 @@
 Bundle-Name: invoke-action-command-web
-Bundle-SymbolicName: br.com.isaacsilva.invoke-action-command
+Bundle-SymbolicName: br.com.isaacsilva.invokeactioncommand
 Bundle-Version: 1.0.0
-Export-Package: br.com.isaacsilva.invoke-action-command.constants
-Provide-Capability:\
-	liferay.language.resources;\
-		resource.bundle.base.name="content.Language"
+Export-Package: br.com.isaacsilva.invokeactioncommand.constants
+Provide-Capability: \
+    	liferay.language.resources;\
+    		resource.bundle.base.name="content.Language"

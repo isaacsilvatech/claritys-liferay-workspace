@@ -1,9 +1,7 @@
-version: "3.9"
-
 services:
   mysql:
     image: mysql:8.0
-    container_name: mysql-liferay
+    container_name: mysql-container
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -14,25 +12,39 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - liferay-net
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   liferay:
-    build: .
-    container_name: liferay
+    image: liferay/portal:7.4.3.132-ga132
+    container_name: liferay-container
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     restart: always
     environment:
-      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL: jdbc:mysql://mysql:3306/lportal?useSSL=false&serverTimezone=UTC
-      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVERCLASSNAME: com.mysql.cj.jdbc.Driver
-      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME: liferay
-      LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD: liferay
-      LIFERAY_PASSWORDS_PERIOD_DEFAULT_PERIOD_POLICY_PERIOD_CHANGE_PERIOD_REQUIRED: false
+      LIFERAY_JDBC_DEFAULT_URL: jdbc:mysql://mysql:3306/lportal?useSSL=false&serverTimezone=UTC
+      LIFERAY_JDBC_DEFAULT_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+      LIFERAY_JDBC_DEFAULT_USERNAME: liferay
+      LIFERAY_JDBC_DEFAULT_PASSWORD: liferay
     ports:
       - "8080:8080"
     volumes:
       - ./liferay/deploy:/opt/liferay/deploy
       - ./liferay/osgi/configs:/opt/liferay/osgi/configs
       - ./liferay/osgi/modules:/opt/liferay/osgi/modules
+
+    networks:
+      - liferay-net
+
+networks:
+  liferay-net:
+    driver: bridge
 
 volumes:
   mysql-data:
