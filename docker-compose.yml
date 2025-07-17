@@ -4,6 +4,7 @@ services:
     container_name: mysql-container
     restart: always
     environment:
+      MYSQL_ROOT_HOST: '%'
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: lportal
       MYSQL_USER: liferay
@@ -35,8 +36,9 @@ services:
       JAVA_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000
     ports:
       - "8080:8080"
+      - "8000:8000"
     volumes:
-      - liferay-data:/opt/liferay/data
+      - ./liferay/data:/opt/liferay/data
       - ./liferay/deploy:/opt/liferay/deploy
       - ./liferay/osgi/configs:/opt/liferay/osgi/configs
       - ./liferay/osgi/modules:/opt/liferay/osgi/modules
@@ -48,5 +50,4 @@ networks:
     driver: bridge
 
 volumes:
-  liferay-data:
   mysql-data:
