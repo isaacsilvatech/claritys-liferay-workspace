@@ -4,13 +4,12 @@ services:
     container_name: mysql-container
     restart: always
     environment:
-      MYSQL_ROOT_HOST: '%'
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: lportal
-      MYSQL_USER: liferay
-      MYSQL_PASSWORD: liferay
+      MYSQL_ROOT_HOST: '%'
     ports:
       - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
@@ -31,8 +30,8 @@ services:
     environment:
       LIFERAY_JDBC_DEFAULT_URL: jdbc:mysql://mysql:3306/lportal?useSSL=false&serverTimezone=UTC
       LIFERAY_JDBC_DEFAULT_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
-      LIFERAY_JDBC_DEFAULT_USERNAME: liferay
-      LIFERAY_JDBC_DEFAULT_PASSWORD: liferay
+      LIFERAY_JDBC_DEFAULT_USERNAME: root
+      LIFERAY_JDBC_DEFAULT_PASSWORD: root
       JAVA_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000
     ports:
       - "8080:8080"
